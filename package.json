@@ -1,0 +1,65 @@
+{
+  "name": "@clickup/distributed-pacer",
+  "description": "A concurrency aware Redis-backed rate limiter with pacing delay prediction and Token Bucket bursts handling.",
+  "version": "2.10.296",
+  "license": "MIT",
+  "keywords": [
+    "leaky bucket",
+    "token bucket",
+    "rate limiting",
+    "rate controller",
+    "pacer",
+    "redis",
+    "lua",
+    "burst"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": "./dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch --preserveWatchOutput",
+    "lint": "bash internal/lint.sh",
+    "test": "REDISCLI_PORT=46879 bash internal/with-docker-compose-up.redis.sh jest",
+    "benchmark": "REDISCLI_PORT=46879 bash internal/with-docker-compose-up.redis.sh node dist/__benchmarks__/DistributedPacer.benchmark.js",
+    "docs": "bash internal/docs.sh",
+    "clean": "bash internal/clean.sh",
+    "copy-package-to-public-dir": "copy-package-to-public-dir.sh",
+    "backport-package-from-public-dir": "backport-package-from-public-dir.sh",
+    "deploy": "bash internal/deploy.sh"
+  },
+  "dependencies": {
+    "delay": "^4.4.1",
+    "ioredis": "^5.3.2",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.5",
+    "@types/lodash": "^4.14.175",
+    "@types/node": "^20.4.1",
+    "@typescript-eslint/eslint-plugin": "^5.59.6",
+    "@typescript-eslint/parser": "^5.59.6",
+    "eslint-import-resolver-typescript": "^3.5.5",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-lodash": "^7.4.0",
+    "eslint-plugin-no-only-tests": "^3.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-typescript-enum": "^2.1.0",
+    "eslint-plugin-typescript-sort-keys": "^2.3.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "eslint": "^8.40.0",
+    "jest": "^29.7.0",
+    "prettier": "3.2.1",
+    "ts-jest": "^29.1.1",
+    "typedoc-plugin-markdown": "^3.16.0",
+    "typedoc-plugin-merge-modules": "^5.1.0",
+    "typedoc": "^0.25.2",
+    "typescript": "^5.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/clickup/distributed-pacer"
+  }
+}
